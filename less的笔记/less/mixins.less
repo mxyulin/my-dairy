@@ -1,0 +1,18 @@
+#main() {
+  // *建议所有将被混入的选择器加上 “()” 以此和普通选择器区分。
+  // *在选择器后面加上 “()” 就不会编译这个样式了，从而减少编译时间。
+  .my-list() {
+    padding-left: 20px;
+    border: 3px solid rgb(25, 25, 210);
+  }
+  .bordered() {
+    border-top: dotted 3px rgb(73, 27, 198);
+    border-bottom: solid 3px rgb(73, 27, 198);
+  }
+}
+
+// *普通选择器也支持混入，但会被编译输出到 CSS 文件中。
+.my-list {
+  padding-left: 20px;
+  border: 3px solid rgb(25, 25, 210);
+}

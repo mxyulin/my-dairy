@@ -1,0 +1,14 @@
+/* 变量 */
+@width: 200px;
+@height: @width + 50px;// 变量的运算
+@my-color: #E03024;
+
+@baseUrl1: 'https://img.ixintu.com/download/jpg/201912/50c6b57e8d8a301407e71fb93da7b035.jpg!con';// 公共 url
+@baseUrl2: 'https://pic.616pic.com/ys_bnew_img/00/05/54/Di4wf5xavU.jpg';// 公共 url
+@baseUrl3: 'https://pic.616pic.com/ys_bnew_img/00/06/05/xqpiI9sQXl.jpg';// 公共 url
+@baseUrl4: 'https://i.udongman.cn/image/2021/0225/20210225035740272.jpg';// 公共 url
+@selector: my-bg;// 公共选择器
+
+// 转义（Escaping）允许你使用任意字符串作为变量值。
+// 可以不加波浪号和双引号，不加的话ESlint会报错。
+@escaping: ~"(min]-width: 800px)";

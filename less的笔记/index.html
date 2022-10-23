@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet/less" type="text/less" href="./less/index.less"/>
+  <script src="./less.js" ></script>
+  <title>Document</title>
+</head>
+<body>
+  <!-- 全局变量 -->
+  <div class="my-variable">
+    <h3>less全局变量</h3>
+    <ul>
+      <li>width: @width;</li>
+      <li>height: @height;</li>
+      <li>background-color: @my-color;</li>
+    </ul>
+  </div>
+  <!-- 公共选择器、公共url、转义字符 -->
+  <div class="my-bg">
+    <h3>less公共选择器、公共url、转义字符</h3>
+    <ul>
+      <li>width: @width;</li>
+      <li>height: @height;</li>
+      <li>background-color: @my-color;</li>
+    </ul>
+  </div>
+  <!-- 命名空间 + 混入 -->
+  <div class="my-mixins">
+    <h3>less混入 + 命名空间</h3>
+    <ul>
+      <li>#main.bordered();</li>
+      <li>&:extend(.my-list);</li>
+    </ul>
+  </div>
+  <!-- 逻辑函数 -->
+  <div class="my-func">
+    <h3>less逻辑函数</h3>
+    <ul>
+      <li>margin-left: if((2 > 1), 10px, 0px);</li>
+      <li>color:  if((iscolor(@my-color)), @my-color, black);</li>
+    </ul>
+  </div>
+  <!-- 映射 -->
+  <div class="my-maps">
+    <h3>less映射规则</h3>
+    <ul>
+      <li>color: #colors[primary];</li>
+      <li>background-color: #colors[primary];</li>
+    </ul>
+  </div>
+</body>
+</html>

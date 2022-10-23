@@ -1,0 +1,97 @@
+// 引入全局变量
+@import "./variable";
+// 引入命名空间 main 中的选择器，用于混入
+@import "./mixins";
+// 引入映射规则
+@import "./maps";
+
+
+// 全局变量
+.my-variable {
+  width: @width;
+  height: @height;
+  background-color: @my-color;
+  display: inline-block;
+  ul {
+    padding-left: 20px;
+  }
+}
+
+// 公共选择器
+.@{selector} {
+  // 公共 url
+  display: inline-block;
+  vertical-align: top;
+  width: 200px;
+  height: 250px;
+  color: orange;
+  background-image: url(@baseUrl1);
+  @media (min-width: 600px) {
+    background-image: url(@baseUrl2);
+    @media  (min-resolution: 192dpi) {
+      background-color: rgb(56, 56, 98);
+    }
+  }
+  // 转义后的条件字符
+  @media  @escaping{
+    background-image: url(@baseUrl3);
+  }
+  @media (min-width: 1200px) {
+    background-image: url(@baseUrl4);
+  }
+}
+
+/* 混入和命名空间 */
+.my-mixins {
+  display: inline-block;
+  vertical-align: top;// *解决 display: inline-block; 元素无法对齐的情况。
+  width: 200px;
+  height: 250px;
+  background-color: rgb(137, 207, 38);
+  // 混入命名空间的选择器
+  #main.bordered();// 还可以写为 #main > bordered
+  ul {
+    // 混入普通选择器
+    &:extend(.my-list);
+  }
+}
+
+/* 逻辑函数 */
+// *逻辑函数
+.my-func {
+  display: inline-block;
+  vertical-align: top;
+  width: @width;
+  height: @height;
+  background-image: url(@baseUrl3);
+  // *一个返回布尔值的条件，true返回第一个值，反之返回第二个值。像三元运算符
+  margin-left: if((2 > 1), 10px, 0px);
+  color:  if((iscolor(@my-color)), @my-color, black);
+  // *还可以先把条件写成变量
+  @bg-light: boolean(luma(@my-color) > 50%);
+  border-color:  if((iscolor(@my-color)), @my-color, black);
+}
+
+/* 映射 */
+.my-maps {
+  display: inline-block;
+  vertical-align: top;
+  width: @width;
+  height: @height;
+  color: #colors[secondary];
+  background-color: #colors[primary];
+}
+
+/* 完整的 clearfix */
+.clearfix {
+  display: block;
+  zoom: 1;// 兼容 ie 浏览器
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}
