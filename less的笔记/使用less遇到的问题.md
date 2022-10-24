@@ -11,4 +11,9 @@
   - less 的伪类`:extend()`用于当前选择器下合并另一个选择器，这样就能使用另一个选择器提供的样式了。[less的extend语法](https://lesscss.org/features/#extend-feature)
     - 由于`:extend()`不支持加了`()`的选择器，所以被混入的选择器应该不加`()`。
   - less 的函数还不少，建议需要的时候再学习使用[less函数](https://less.bootcss.com/#%E5%87%BD%E6%95%B0functions)
+- less 的配置是很绕的:
+  1. 首先需要掌握[加载器的配置-loaderConfiguration](https://www.webpackjs.com/concepts/loaders/#%E9%85%8D%E7%BD%AE-configuration-)
+  2. 然后是掌握[模块规则数组-UseEntries](https://www.webpackjs.com/configuration/module/#module-rules)
+  3. 再是掌握`UseEntry`的核心-加载器配置项[UseEntry.options](https://webpack.docschina.org/loaders/less-loader/#options)
+  4. 最后最核心的是 Less 的可选项[Less命令行可选参数](https://less.bootcss.com/usage/#command-line-usage)，需要注意的是**需要将破折号（dash-case）转换为驼峰值（camelCase）后传递它们**。
 - [less即学即用---掘金高赞文章](https://juejin.cn/post/6844903688444739592)
