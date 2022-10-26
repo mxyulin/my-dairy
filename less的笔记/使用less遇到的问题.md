@@ -16,4 +16,34 @@
   2. 然后是掌握[模块规则数组-UseEntries](https://www.webpackjs.com/configuration/module/#module-rules)
   3. 再是掌握`UseEntry`的核心-加载器配置项[UseEntry.options](https://webpack.docschina.org/loaders/less-loader/#options)
   4. 最后最核心的是 Less 的可选项[Less命令行可选参数](https://less.bootcss.com/usage/#command-line-usage)，需要注意的是**需要将破折号（dash-case）转换为驼峰值（camelCase）后传递它们**。
+- 代码示例：
+
+  ```js
+    // less 配置
+  module: {
+    rules: [
+      {
+        // 打包之前检测到 less 文件，就应用 use 配置项
+        test: /\.less$/,
+        // 应用less 文件的配置，通过 less-loader 把 less 转换成普通 CSS
+        use: ["vue-style-loader", "css-loader", {
+          loader: "less-loader",// 为 less文件 指定 loader
+          // 一个 UseEntry.options 对象
+          options: {
+            // *Less 的可选项，最核心的配置项
+            lessOptions: {
+              // 所有 CSS 静态资源的根路径
+              rootpath: '/src/assets'
+            },
+            // 生成 source map
+            sourceMap: true,
+            // 此项可能会使得 aliases 和以 ~ 开头的 @import 规则失效
+            //// webpackImporter: false,
+          }
+        }],
+      },
+    ],
+  },
+  ```
+
 - [less即学即用---掘金高赞文章](https://juejin.cn/post/6844903688444739592)
