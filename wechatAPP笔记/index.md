@@ -20,7 +20,16 @@
 - JSON 配置文件
   - app.json 是当前[小程序的全局配置](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html)，统一配置页面路径、界面表现、网络超时时间、底部 tab 等。
   - page.json 是[小程序某个页面页面的配置](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html)，用于单独指定某一页面的样式效果等。
-  - **注意**：JSON 文件中不要写注释，因为
+  - **注意**：JSON 文件中不能写注释，写了注释会报错。因为过多的注释，影响了文件本身的数据载体的目的。
+- page.wxml 是微信小程序的标记语言文件，就是相当于 HTML 文件
+  - WXML 提供了：数据绑定、列表渲染、条件渲染、template 标签模板等[WXML语法](https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/)，还有很多成熟完善的[微信小程序组件](https://developers.weixin.qq.com/miniprogram/dev/component/)供开发者使用。
+- page.wxss 是微信小程序样式表文件，具有大部分 CSS 特性，相当于 CSS 文件。
+  - 相比 CSS 新增了**尺寸单位**`rpx`，用于兼容不同移动设备屏幕宽度和像素比。由于是浮点运算，可能结果会和预期有一点点的偏差。
+  - app.wxss 文件作为全局样式应用，局部页面样式 page.wxss 仅对当前页面生效。
+  - **注意**： WXSS 仅支持部分 CSS 选择器，请参考[WXSS语法](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html)。
+- page.js 是小程序的逻辑交互文件，相对于PC网页开发不同之处在上文《小程序和网页开发的区别》已说明。
+  - 微信小程序也提供了一套自己的 [WeiXinScript](https://developers.weixin.qq.com/miniprogram/dev/reference/wxs/) 语法，和原生 JavaScript 有区别。
+  - 当然最重要的是微信小程序提供的各种[API](https://developers.weixin.qq.com/miniprogram/dev/api/)。
 
 ## 小程序框架
 
@@ -35,20 +44,34 @@
 - window配置项
 
 ```json
-  // 导航栏样式
-  "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "我的应用",
-  "navigationBarBackgroundColor": "#07C160",
-  "backgroundColor": "#F8F8F8",
-  // ios 导航栏样式
-  "backgroundColorTop": "#F8F8F8",
-  "backgroundColorBottom": "#F8F8F8",
-  // 下拉样式
-  "backgroundTextStyle": "dark",
-  "enablePullDownRefresh": true,
-  // home 按钮（左上）
-  "homeButton": true,
-  "onReachBottomDistance": 50,
-  "pageOrientation": "auto",
-  "restartStrategy": "homePageAndLatestPage"
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "subPackages": [],
+  "window": {
+    // 导航栏样式
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "我的应用",
+    "navigationBarBackgroundColor": "#07C160",
+    "backgroundColor": "#F8F8F8",
+    // ios 导航栏样式
+    "backgroundColorTop": "#F8F8F8",
+    "backgroundColorBottom": "#F8F8F8",
+    // 下拉样式
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true,
+    // home 按钮（左上）
+    "homeButton": true,
+    "onReachBottomDistance": 50,
+    "pageOrientation": "auto",
+    "restartStrategy": "homePageAndLatestPage"
+  },
+  "usingComponents": {},
+  "tab": {
+    "list": [
+    ]
+  }
+}
 ```
