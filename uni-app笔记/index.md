@@ -11,7 +11,7 @@
 - 初始化项目`vue create -p dcloudio/uni-preset-vue project-name`
 - 选择默认模板即可（其他模板视情况而定）
 
-### 语法提示(暂不安装)
+### 语法提示插件(暂不安装)
 
 ### 内联颜色修饰器(暂不设置)
 
