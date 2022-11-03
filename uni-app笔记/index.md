@@ -6,7 +6,7 @@
 
 ### 环境搭建
 
-- uni-app 中 Vue2.x 版的组件库和插件也比较多，稳定、问题少，可以先参考下官方文档：[通过vue-cli命令行](https://link.juejin.cn/?target=https%3A%2F%2Funiapp.dcloud.net.cn%2Fquickstart-cli.html%23install-vue-cli)
+- uni-app 中 Vue2.x 版的组件库和插件也比较多，稳定、问题少，可以先参考下官方文档：[通过vue-cli命令行](https://uniapp.dcloud.net.cn/quickstart-cli.html)
 - 安装脚手架`npm i -g @vue/cli@4`
 - 初始化项目`vue create -p dcloudio/uni-preset-vue project-name`
 - 选择默认模板即可（其他模板视情况而定）
@@ -57,17 +57,27 @@
 
 ### 组件语法提示
 
-- 如\<view>、\<button>等 uni-app 原生组件语法提示。
+- 如`<view>`、`<button>`等 uni-app 原生组件语法提示。
 - 安装插件`npm i @dcloudio/uni-helper-json`即可。
 - 如果是使用的 vue3.x，可以使用`uni-app-types`这个包，因为`@dcloudio/uni-helper-json`不支持 vue3.x。
-  - 然后在 tsconfig.jsonorjsconfig.json 配置 compilerOptions.types 和 vueCompilerOptions，确保 include 包含了对应的 vue 文件。
+  - 然后在 tsconfig.json 或者 jsconfig.json 配置 compilerOptions.types 和 vueCompilerOptions，确保 include 包含了对应的 vue 文件。
 - uni.scss 变量提示，安装依赖`npm i sass sass-loader@10 -D`。
   - 安装 SCSS IntelliSense 插件，就可以提示你项目中 scss 文件中定义的变量了。
 
-### 运行、发布项目
+### 运行、打包、发布项目
 
 - [运行、发布uniapp](https://zh.uniapp.dcloud.io/quickstart-cli.html#%E8%BF%90%E8%A1%8C%E3%80%81%E5%8F%91%E5%B8%83uni-app)
   - 如果嫌 npm 命令过长，还可以使用 VSCode 的一键运行 npm 脚本，[以微信小程序为例](20221028141305.gif)。
+  - 项目打包
+    - 打包模式有两个：`dev`和`build`
+      1. `dev`模式有`SourceMap`可以方便的进行断点调试。
+      2. `build`模式打包会将代码进行压缩，打包成体积更小更适合发布为正式版应用。
+      3. `dev`模式打包文件放在`/dist/dev/`目录下；同理，`build`模式打包文件放在`/dist/build`目录下。
+      4. 进行环境判断时，`dev`模式`process.env.NODE_ENV`的值为`development`，`build`模式`process.env.NODE_ENV`的值为`production`。
+  - 原生应用打包：
+    - 命令：`npm run build:app-plus`
+    - 打包资源路径：`/dist/build/app-plus`
+    - 如需制作`wgt`包，将`app-plus`文件夹中的文件压缩成zip。再重命名为`${appid}.wgt`， 其中`appid`为`manifest.json`文件中的`appid`。
 - vscode 开发小程序，需要手动导入项目。导入一次即可，往后打开微信小程序开发工具就能直接预览。
   - 导入前需要在 manifest.json 配置微信小程序 appid ，不然微信开发者工具会报错。
 
@@ -75,4 +85,7 @@
 
 ### vscode 使用 DCloud 插件市场的插件
 
-VSCode 不能像 Hbuilder X 一样一键导入插件，一般用 cli 创建的项目要使用插件，一般有两种方式，第一种是支持 npm 安装的，那就用 npm 最好，如 uViewUI，另一种不支持 npm 安装的，那就下载对应的 zip 压缩包，放到项目中，这种一般会有两个版本，我们选择非 uni_modules 版本，如 uCharts。
+VSCode 不能像 Hbuilder X 一样一键导入插件，一般用 cli 创建的项目要使用插件，一般有两种方式:
+
+- 第一种是支持 npm 安装的，那就用 npm 最好，如 uViewUI。
+- 另一种不支持 npm 安装的，那就下载对应的 zip 压缩包，放到项目中，这种一般会有两个版本，我们选择非 uni_modules 版本，如 uCharts。

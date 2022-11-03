@@ -2,7 +2,7 @@
 
 - 在浏览器中使用 less.js 需要满足以下几点：
   1. 引入 less.js 之前需要先引入 xxx.less ，因为 less.js 执行时会去找已有的 xxx.less 文件。
-  2. 需要特别注意的的是：浏览器端 less.js 使用的是`ajax`来拉取 xxx.less 文件，所以直接以本地浏览器（file://）打开的 html 文件是拉取不到 xxx.less 的，所以需要用**Live Server**等轻量级服务器插件进行处理。
+  2. 需要特别注意的的是：浏览器端 less.js 使用的是`ajax`来拉取 xxx.less 文件，所以直接以本地浏览器。（file://）打开的 html 文件是拉取不到 xxx.less 的，所以需要用**Live Server**等轻量级服务器插件进行处理。
   3. `@import "./less/variable.less;"`引入 less 文件请注意用`;`结束。
 - 理解 less 语法规则：
   - mixin 混入是一种方法（可以看作一个动词），用于把一组样式规则应用在另一个选择器中。
