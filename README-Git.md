@@ -36,10 +36,15 @@
 - [log]:日志
   - 查看提交日志：`git log`
   - `git reflog`查看参考日志，`reflog`即`Reference logs`，记录分支提示和其他引用在本地存储库中更新的时间。
+- [reset]:版本回退
+  - 先`git reflog`查看需要回退的版本。
+  - 再`git reset --hard 版本号`回退到该版本代码状态。
 - **忽略文件名单**：输入命令`touch .gitignore`可以生成忽略名单文件，鼠标右键新建也行。
 - [branch]:分支
   - 创建分支`git branch 分支名`，可用破折号连接单词。
   - 进入分支`git checkout 分支名`。
+    - 切换本地分支`git checkout branchName`
+    - 如果切换不成功，说明本地没有这个分支，那就需要`git pull origin branchName`先把该分支拉到本地库。
   - 删除分支(需要退出要删除的分支)
     - 删除已合并分支`git branch -d 分支名`。
     - 强制删除分支（不论是否合并）`git branch -D 分支名`（**工作中别用！**）。
@@ -67,7 +72,11 @@
 
 ## 常见报错
 
-- `errno 10054`
+- `OpenSSL SSL_read: Connection was reset, errno 10054`
   - 首先，造成这个错误很有可能是网络不稳定，连接超时导致的，如果再次尝试后依然报错，可以执行`git config --global http.sslVerify "false"`，作用是解除SSL认证。
   - CMD窗口输入`ipconfig /flushdns`清除DNS缓存。
   - 有可能代理节点废了，建议用国内的网直连，应该都行。
+  - [解决办法---CSDN](https://blog.csdn.net/m0_51269961/article/details/123709195)
+- `! [rejected] ... error: failed to push some refs to`
+  - 使用`git pull --rebase origin master`，再推送代码。
+  - [解决办法--CSDN](https://blog.csdn.net/qq_45893999/article/details/106273214)
