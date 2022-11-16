@@ -53,6 +53,9 @@
 - `JSON parse error: Cannot deserialize value of type 'java.lang.Integer' from`
   - 原因：前端组件传输的数据字段类型和后端实体类字段不一致。
   - 解决办法：用`navicat`查看数据库字段类型，把组件传入的参数类型写正确。比如后端需要`string`，你前端不能传个`number`。
+- `npm(node) : 无法将“npm(node)”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。`
+  - 原因：环境变量被修改或者删除了。
+  - 解决办法：把`npm.cmd`, `node.exe`所在的路径添加到用户环境变量`Path`字段的数据里。还可以添加`node_global`和`node_cache`所在路径。
 
 ## 建议
 
